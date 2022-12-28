@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
-            $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->decimal('amount');
-            $table->text('description');
-            $table->string('ref_id');
-            $table->dateTime('payment_date');
+        Schema::create('loans', function (Blueprint $table) {
+            $table->uuid('id');
+            $table->string('customer_id');
+            $table->string('reference');
+            $table->string('state');
+            $table->decimal('amount_issued');
+            $table->decimal('amount_to_pay');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('loans');
     }
 };

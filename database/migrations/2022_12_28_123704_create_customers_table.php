@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
-            $table->id();
+        Schema::create('customers', function (Blueprint $table) {
+            $table->uuid('id');
             $table->string('firstname');
             $table->string('lastname');
-            $table->decimal('amount');
-            $table->text('description');
-            $table->string('ref_id');
-            $table->dateTime('payment_date');
+            $table->string('ssn');
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('customers');
     }
 };
