@@ -19,6 +19,6 @@ class Customer extends Model
 
     public function loans()
     {
-        return $this->hasMany(Loan::class, 'customerId', 'id');
+        return $this->hasMany(Loan::class, 'customer_id');
     }
 }

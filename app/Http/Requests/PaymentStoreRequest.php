@@ -27,7 +27,7 @@ class PaymentStoreRequest extends FormRequest
             'firstname' => ['required', 'string', 'max:191'],
             'lastname' => ['required', 'string', 'max:191'],
             'amount' => ['required', 'numeric', 'gt:0'],
-            'description' => ['required', 'string', 'max:191'],
+            'description' => ['required', 'string', 'min:10', 'max:10', 'exists:loans,reference'],
             'refId' => ['required', 'string', 'unique:payments,ref_id'],
             'paymentDate' => ['required', 'date']
         ];
@@ -48,7 +48,9 @@ class PaymentStoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'refId.unique' => "Duplicate Reference Id."
+            'refId.unique' => "Duplicate Reference Id.",
+            'description.min' => "Invalid Description",
+            'description.max' => "Invalid Description",
         ];
     }
 }
